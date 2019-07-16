@@ -1,14 +1,14 @@
 function startMap() {
-  const saoPaulo = { lat:  -23.576947,  lng: -46.635324 };
+  const saoPaulo = { lat: -23.576947, lng: -46.635324 };
 
   // Initialize the map
-  const map = new google.maps.Map(document.getElementById('map'), 
+  const map = new google.maps.Map(document.getElementById('map'),
     {
       zoom: 12,
       center: saoPaulo
     }
   );
-  
+
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function (position) {
       const user_location = {
@@ -35,6 +35,37 @@ function startMap() {
   } else {
     console.log('Browser does not support geolocation.');
   }
+
+  const getEvents = () => {
+    console.log('Ola')
+    axios.get("/api/events")
+      .then(response => {
+        console.log(response)
+        placeEvents(response.data.event);
+      })
+      .catch(error => {
+        console.log(error);
+      })
+  }
+
+  const placeEvents = events => {
+    events.forEach(event => {
+      console.log(event.location);
+      if (event.location) {
+        const center = {
+          lat: event.location.coordinates[1],
+          lng: event.location.coordinates[0]
+        };
+        const pin = new google.maps.Marker({
+          position: center,
+          map: map,
+          title: event.name
+        });
+      }
+    });
+  }
+  getEvents();
 }
 
 startMap();
+

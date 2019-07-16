@@ -52,6 +52,9 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 
 const auth = require('./routes/auth');
+const userActions = require('./routes/useractions')
 app.use('/', auth);
+app.use('/', userActions);
+
 
 module.exports = app;

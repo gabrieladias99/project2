@@ -43,7 +43,8 @@ router.get('/loginplace', (req,res,next) =>{
 })
 
 router.get('/map', (req,res,next) =>{
-  res.render('maps/map')
+  const googleKey = process.env.GOOGLE_KEY
+  res.render('maps/map', {googleKey})
 })
 
 
