@@ -15,52 +15,66 @@ router.get('/userlogin', (req, res) => {
 
 router.post('/userlogin', passport.authenticate('local', {
   successRedirect: '/userprofile',
+  // successRedirect points to a route
   failureRedirect: '/userlogin',
+  // failureRedirect points to a route
   failureFlash: true,
   passReqToCallback: true,
 }));
 
-router.get('/logout', (req, res) => {
+router.get('/userprofile', ensureLoggedIn(), (req, res) => {
+  if (req.user.role === 'Music Lover') {
+    res.render('profiles/musicloverprofile', { user: req.user });
+  }
+  if (req.user.role === 'Artist') {
+    res.render('profiles/artistprofile', { user: req.user });
+  }
+  if (req.user.role === 'Hosting Venue') {
+    res.render('profiles/hostingvenueprofile', { user: req.user });
+  }
+});
+
+router.get('/userlogout', (req, res) => {
   req.logout();
   res.redirect('/userlogin');
 });
 
-// User log in, authentication, and log out routes
-
-// Colocar ID como params
-router.get('/userprofile', ensureLoggedIn(), (req, res) => {
-  res.render('profiles/user');
-});
-// Colocar ID como params
-router.get('/edituser', (req, res) => {
-  res.render('useractions/edituser');
-});
-
-router.get('/event', (req, res) => {
-  res.render('profiles/event');
-});
-
-// Colocar ID como params
-router.get('/profileplace', (req, res) => {
-  res.render('profiles/place');
-});
-
-router.get('/loginartist', (req, res) => {
-  res.render('auth/loginartist');
-});
-
-
-// Colocar ID como params
-router.get('/profileartist', (req, res) => {
-  res.render('profiles/artist');
-});
-
-router.get('/loginplace', (req, res) => {
-  res.render('auth/loginplace');
-});
-
-router.get('/map', (req, res) => {
-  res.render('maps/map');
-});
-
 module.exports = router;
+
+// router.get('/private', checkRoles('ADMIN'), (req, res) => {
+//   res.render('private', {user: req.user});
+// });
+
+
+// // Colocar ID como params
+// router.get('/edituser', (req, res) => {
+//   res.render('useractions/edituser');
+// });
+
+// router.get('/event', (req, res) => {
+//   res.render('profiles/event');
+// });
+
+// // Colocar ID como params
+// router.get('/profileplace', (req, res) => {
+//   res.render('profiles/place');
+// });
+
+// router.get('/loginartist', (req, res) => {
+//   res.render('auth/loginartist');
+// });
+
+
+// // Colocar ID como params
+// router.get('/profileartist', (req, res) => {
+//   res.render('profiles/artist');
+// });
+
+// router.get('/loginplace', (req, res) => {
+//   res.render('auth/loginplace');
+// });
+
+// router.get('/map', (req, res) => {
+//   res.render('maps/map');
+// });
+

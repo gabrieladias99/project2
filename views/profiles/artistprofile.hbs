@@ -1,8 +1,12 @@
-<h1>USER PROFILE</h1>
+<h1>Artist</h1>
 
 <a href="/edituser">EDIT</a>
 <img src="" alt="">
-<p>Name:</p>
+
+<p>User Type: {{user.role}}</p>
+<p>User ID: {{user._id}}</p>
+<p>Username: {{user.username}}</p>
+
 <p>My Events</p>
 <ul>
   <li><a href="/event">Events 1</a></li>
@@ -23,3 +27,5 @@
 </ul>
 
 <p>Notifications</p>
+
+<a href="/userlogout">Log Out</a>

@@ -10,7 +10,7 @@ authRoutes.get('/usersignup', (req, res, next) => {
 });
 
 authRoutes.post('/usersignup', (req, res, next) => {
-  const { username, password } = req.body;
+  const { username, password, role } = req.body;
 
   if (username === '' || password === '') {
     res.render('auth/usersignup', { message: 'Indicate username and password' });
@@ -30,13 +30,14 @@ authRoutes.post('/usersignup', (req, res, next) => {
       const newUser = new User({
         username,
         password: hashPass,
+        role,
       });
 
       newUser.save((err) => {
         if (err) {
           res.render('auth/usersignup', { message: 'Something went wrong' });
         } else {
-          res.redirect('/');
+          res.redirect('/userlogin');
         }
       });
     })
