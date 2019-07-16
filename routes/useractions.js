@@ -45,7 +45,7 @@ router.get('/api/events', (req, res, next) => {
     .then(event => {
       res.status(200).json({ event });
     })
-    .catch(error => console.log(erroeventsfilterr))
+    .catch(error => console.log(error))
 });
 
 
@@ -55,9 +55,19 @@ router.get('/eventsfilter', (req, res, next) => {
 
 
 router.post('/eventsfilter', (req, res, next) => {
-  
+  let {date, from, to, music} = req.body
+
+  from = passToNumber(from)
+  to = passToNumber(to)
+   
+  console.log(date,from,to,music)
+
+  Event.find({date: date,
+    'time.from': {$gte: from},
+    'time.to': {$lte: to},
+    styles:music})
     .then(event => {
-      console.log(event)
+      
     })
     .catch(error => console.log(error))
 });
