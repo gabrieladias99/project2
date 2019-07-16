@@ -1,50 +1,66 @@
 const express = require('express');
-const router  = express.Router();
+const passport = require('passport');
+const { ensureLoggedIn } = require('connect-ensure-login');
 
-/* GET home page */
-router.get('/', (req, res, next) => {
+const router = express.Router();
+
+router.get('/', (req, res) => {
   res.render('auth/identification');
 });
 
-router.get('/loginuser', (req,res,next) =>{
-  res.render('auth/loginuser')
-})
+// User log in, authentication, and log out routes
+router.get('/userlogin', (req, res) => {
+  res.render('auth/userlogin', { message: req.flash('error') });
+});
+
+router.post('/userlogin', passport.authenticate('local', {
+  successRedirect: '/userprofile',
+  failureRedirect: '/userlogin',
+  failureFlash: true,
+  passReqToCallback: true,
+}));
+
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.redirect('/userlogin');
+});
+
+// User log in, authentication, and log out routes
 
 // Colocar ID como params
-router.get('/profileuser', (req,res,next) =>{
-  res.render('profiles/user')
-})
+router.get('/userprofile', ensureLoggedIn(), (req, res) => {
+  res.render('profiles/user');
+});
 // Colocar ID como params
-router.get('/edituser', (req,res,next) =>{
-  res.render('useractions/edituser')
-})
+router.get('/edituser', (req, res) => {
+  res.render('useractions/edituser');
+});
 
-router.get('/event', (req,res,next) =>{
-  res.render('profiles/event')
-})
-
-// Colocar ID como params
-router.get('/profileplace', (req,res,next) =>{
-  res.render('profiles/place')
-})
-
-router.get('/loginartist', (req,res,next) =>{
-  res.render('auth/loginartist')
-})
-
+router.get('/event', (req, res) => {
+  res.render('profiles/event');
+});
 
 // Colocar ID como params
-router.get('/profileartist', (req,res,next) =>{
-  res.render('profiles/artist')
-})
+router.get('/profileplace', (req, res) => {
+  res.render('profiles/place');
+});
 
-router.get('/loginplace', (req,res,next) =>{
-  res.render('auth/loginplace')
-})
+router.get('/loginartist', (req, res) => {
+  res.render('auth/loginartist');
+});
 
-router.get('/map', (req,res,next) =>{
-  res.render('maps/map')
-})
 
+// Colocar ID como params
+router.get('/profileartist', (req, res) => {
+  res.render('profiles/artist');
+});
+
+router.get('/loginplace', (req, res) => {
+  res.render('auth/loginplace');
+});
+
+router.get('/map', (req, res) => {
+  res.render('maps/map');
+});
 
 module.exports = router;
