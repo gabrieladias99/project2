@@ -1,0 +1,28 @@
+<h1>FILTER AN EVENT</h1>
+<a href="/">Return</a>
+
+
+<form action="/eventsfilter" method="POST">
+
+  <label>Date:</label>
+  <input type="date" name="date">
+  <br>
+
+  <label>From:</label<h1>FILTER AN EVENT</h1>
+<a href="/">Return</a>
+>
+  <input type="time" name="from" min="0:00" max="23:59">
+  <label>To:</label>
+  <input type="time" name="to" min="0:00" max="23:59">
+  <br>
+
+  <label>Music Styles</label>
+  <select name="music">
+    <option value="country">Country</option>
+    <option value="pop">Pop</option>
+    <option value="rock">Rock</option>
+  </select>
+  <br>
+
+  <button onclick="mapInit()" type="submit">ADD FILTERS</button>
+</form>
