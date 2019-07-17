@@ -1,6 +1,8 @@
 const express = require('express');
-const router  = express.Router();
+const router = express.Router();
 const Event = require('../models/event')
+
+
 
 /* GET home page */
 router.get('/createevent', (req, res, next) => {
@@ -9,7 +11,7 @@ router.get('/createevent', (req, res, next) => {
 
 const passToNumber = (number) => {
   const arr = number.split(":")
-  const finalNumber = parseInt(arr[0])*60+ parseInt(arr[1])
+  const finalNumber = parseInt(arr[0]) * 60 + parseInt(arr[1])
   return finalNumber
 }
 
@@ -29,7 +31,7 @@ router.post('/createevent', (req, res, next) => {
     from: from,
     to: to,
   };
-  const newEvent = new Event({ name, date,time, styles: music, location });
+  const newEvent = new Event({ name, date, time, styles: music, location });
 
   newEvent.save()
     .then(() => {
@@ -41,7 +43,17 @@ router.post('/createevent', (req, res, next) => {
 });
 
 router.get('/api/events', (req, res, next) => {
-  Event.find()
+  let { date = new Date(), from = 0, to = 1439, music='country' } = filter
+
+  console.log(date,from,to,music)
+  if(from!== 0 && to !== 1439){
+    from = passToNumber(from)
+    to = passToNumber(to)
+  }
+  
+  Event.find({ date:date,
+    'time.from': {$gte: from},
+    'time.to': {$lte:to}})
     .then(event => {
       res.status(200).json({ event });
     })
@@ -49,26 +61,15 @@ router.get('/api/events', (req, res, next) => {
 });
 
 
-router.get('/eventsfilter', (req, res, next) => {
+router.get('/filters', (req, res, next) => {
   res.render('useractions/filterevent')
 });
 
+let filter = 0
 
 router.post('/eventsfilter', (req, res, next) => {
-  let {date, from, to, music} = req.body
-
-  from = passToNumber(from)
-  to = passToNumber(to)
-   
-  console.log(date,from,to,music)
-
-  Event.find({date: date,
-    'time.from': {$gte: from},
-    'time.to': {$lte: to},
-    styles:music})
-    .then(event => {
-      
-    })
-    .catch(error => console.log(error))
+  filter = req.body
+  console.log(filter)
+  res.redirect('/map')
 });
 module.exports = router;
