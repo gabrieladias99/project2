@@ -54,6 +54,10 @@ module.exports = router;
 // router.get('/event', (req, res) => {
 //   res.render('profiles/event');
 // });
+router.get('/map', (req,res,next) =>{
+  const googleKey = process.env.GOOGLE_KEY
+  res.render('maps/map', {googleKey})
+})
 
 // // Colocar ID como params
 // router.get('/profileplace', (req, res) => {
