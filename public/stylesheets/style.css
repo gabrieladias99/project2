@@ -8,7 +8,11 @@ body {
   border: 1px solid black; }
 
 #map {
-  height: 80%;
+  height: 776px;
+  width: 375px; }
+
+#mapEvent {
+  height: 300px;
   width: 375px; }
 
 #filter {

@@ -1,5 +1,7 @@
 const express = require('express');
 const passport = require('passport');
+const Event = require('../models/event')
+
 const { ensureLoggedIn } = require('connect-ensure-login');
 
 const router = express.Router();
@@ -22,19 +24,23 @@ router.post('/userlogin', passport.authenticate('local', {
   passReqToCallback: true,
 }));
 
-router.get('/userprofile', ensureLoggedIn(), (req, res) => {
+router.get('/userprofile', ensureLoggedIn('/userlogin'), (req, res) => {
   if (req.user.role === 'Music Lover') {
     res.render('profiles/musicloverprofile', { user: req.user });
   }
   if (req.user.role === 'Artist') {
-    res.render('profiles/artistprofile', { user: req.user });
+    Event.find({owner: req.user._id})
+    .then((events) => {
+      res.render('profiles/artistprofile', { user: req.user, events });
+    })
+    .catch((error) => console.log(error))
   }
   if (req.user.role === 'Hosting Venue') {
     res.render('profiles/venueprofile', { user: req.user });
   }
 });
 
-router.get('/userlogout', (req, res) => {
+router.get('/userlogout', ensureLoggedIn('/userlogin'), (req, res) => {
   req.logout();
   res.redirect('/userlogin');
 });

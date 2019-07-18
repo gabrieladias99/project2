@@ -7,7 +7,9 @@ const eventSchema = new Schema({
   date: Date,
   time: { from: Number, to: Number},
   styles: String,
-  location: { type: { type: String }, coordinates: [Number] }
+  location: { type: { type: String }, coordinates: [Number] },
+  address: String,
+  owner: { type: Schema.Types.ObjectId, ref:'User'}
 }, {
     timestamps: true
   });

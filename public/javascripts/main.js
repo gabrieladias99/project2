@@ -20,13 +20,15 @@ const mapInit = () => {
         ]
       }
     ],
-    {name: 'Styled Map'});
+    { name: 'Styled Map' });
 
   // Initialize the map
   const map = new google.maps.Map(document.getElementById('map'),
     {
       zoom: 13,
-      center: saoPaulo
+      center: saoPaulo,
+      disableDefaultUI: true,
+      zoomControl: true,
     }
   );
 
@@ -74,16 +76,21 @@ const mapInit = () => {
 
   const placeEvents = events => {
     events.forEach(event => {
-      if (event.location) {
-        const center = {
-          lat: event.location.coordinates[1],
-          lng: event.location.coordinates[0]
-        };
-        const pin = new google.maps.Marker({
-          position: center,
-          map: map,
-          title: event.name
-        });
+      if (event.address) {
+        axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${event.address}&key=AIzaSyDoxPEGeVeOvKxqfnt8I8o03oEWgT0-wt0`)
+          .then((response) => {
+            const center = {
+              lat: response.data.results[0].geometry.location.lat,
+              lng: response.data.results[0].geometry.location.lng
+            };
+            const pin = new google.maps.Marker({
+              position: center,
+              map: map,
+              title: event.name
+            });
+          })
+          .catch((error) => console.log(error))
+        
       }
     });
   }
@@ -91,5 +98,7 @@ const mapInit = () => {
 }
 
 mapInit()
+
+
 
 
