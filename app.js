@@ -104,14 +104,12 @@ app.use(passport.session());
 const auth = require('./routes/auth');
 app.use('/', auth);
 
-const userActions = require('./routes/useractions')
+const userActions = require('./routes/useractions');
 app.use('/', userActions);
 
 // reference to passport middleware
 const passportRoute = require('./routes/passport');
 
 app.use('/', passportRoute);
-
-
 
 module.exports = app;

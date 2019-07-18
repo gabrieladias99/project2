@@ -1,10 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const Event = require('../models/event')
+const Event = require('../models/event');
 
-
-
-/* GET home page */
 router.get('/createevent', (req, res, next) => {
   res.render('useractions/createevent');
 });

@@ -11,10 +11,24 @@
 </head>
 
 <body>
+  <header class="header">
+    <nav class="nav nav-pills flex-column flex-sm-row">
+      <a class="flex-sm-fill text-sm-center nav-link active" href="#">Filter</a>
+      <a class="flex-sm-fill text-sm-center nav-link" href="#">Events List</a>
+      <a class="flex-sm-fill text-sm-center nav-link" href="#">Profile</a>
+      <a class="flex-sm-fill text-sm-center nav-link" href="userlogin">Log In</a>
+    </nav>
+  </header>
 
-{{!-- This tag renders the views content --}}
+<main>
+
+  {{!-- This tag renders the views content --}}
   {{{body}}}
 
+  <footer>
+
+  </footer>
+</main>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script type="text/javascript" src="/javascripts/main.js"></script>
   <script src="/javascripts/script.js"></script>

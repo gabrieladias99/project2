@@ -4,6 +4,11 @@ body {
   padding:0
 }
 
+.header {
+  margin: 10px;
+  border: 1px solid black;
+}
+
 #map {
  height: 80%;
  width: 375px;
@@ -30,22 +35,3 @@ body {
   background-color: red;
 }
 
-.btn{
-  background-color: #1c87c9;
-  border: none;
-  color: white;
-  position: flex;
-  flex-grow: 1;
-}
-
-.container{
-  width:100%;
-  padding-right: 0;
-    padding-left: 0;
-    margin-right: 0;
-    margin-left: 0;
-}
-
-#wrapper{
-  position: relative
-}
