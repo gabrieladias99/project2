@@ -18,7 +18,7 @@ const User = require('./models/user');
 
 // Method connecting app.js to mongoDB
 mongoose
-  .connect('mongodb://localhost/project2', { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then((x) => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`);
   })
@@ -102,11 +102,10 @@ app.use(passport.session());
 
 // Require the routes created within the dir routes
 const auth = require('./routes/auth');
+app.use('/', auth);
 
 const userActions = require('./routes/useractions')
-app.use('/', auth);
 app.use('/', userActions);
-
 
 // reference to passport middleware
 const passportRoute = require('./routes/passport');

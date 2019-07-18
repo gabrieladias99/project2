@@ -1,8 +1,16 @@
-<div id="map"></div>
+<div id='wrapper'>
+  <a id='filter' href="/filters">Filters</a>
+  {{!-- <div id="map"></div> --}}
+  <div class='fake-map'></div>
+  <div class='container'>
+    <div class='row'>
+      <a class='btn col-4'>Busca</a>
+      <a class='btn col-4'>Lista</a>
+      <a class='btn col-4'>Login</a>
+    </div>
 
-<button id='filter'><a href="/filters">Filters</a></button>
+  </div>
+</div>
 
 
-
-
-  <script src="https://maps.googleapis.com/maps/api/js?key={{googleKey}}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key={{googleKey}}"></script>
