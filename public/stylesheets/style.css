@@ -1,14 +1,47 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   margin: 0;
   padding: 0; }
 
-a {
-  color: #00B7FF; }
-
 #map {
-  height: 812px;
+  height: 80%;
   width: 375px; }
+
+#filter {
+  background-color: #1c87c9;
+  border: none;
+  color: white;
+  padding: 15px 0;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  cursor: pointer;
+  position: absolute;
+  z-index: 99; }
+
+.fake-map {
+  height: 776px;
+  width: 375px;
+  background-color: red; }
+
+.btn {
+  background-color: #1c87c9;
+  border: none;
+  color: white;
+  position: flex;
+  flex-grow: 1; }
+
+.container {
+  width: 100%;
+  height: 10%;
+  padding-right: 0;
+  padding-left: 0;
+  margin-right: 0;
+  margin-left: 0; }
+
+#wrapper {
+  position: relative; }
 
 /*# sourceMappingURL=style.css.map */
