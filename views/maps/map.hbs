@@ -1,7 +1,6 @@
 <div id='wrapper'>
   <a id='filter' href="/filters">Filters</a>
-  {{!-- <div id="map"></div> --}}
-  <div class='fake-map'></div>
+  <div id="map"></div>
   <div class='container'>
     <div class='row'>
       <a class='btn col-4'>Busca</a>
@@ -12,5 +11,7 @@
   </div>
 </div>
 
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key={{googleKey}}&libraries=places"></script>
+  <script type="text/javascript" src="/javascripts/main.js"></script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key={{googleKey}}"></script>

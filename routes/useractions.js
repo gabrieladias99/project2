@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const Event = require('../models/event')
-
+const User = require('../models/user')
+const {ensureLoggedIn} = require('connect-ensure-login');
 
 
 /* GET home page */
-router.get('/createevent', (req, res, next) => {
-  res.render('useractions/createevent');
+router.get('/createevent', ensureLoggedIn('/userlogin'), (req, res, next) => {
+  const googleKey = process.env.GOOGLE_KEY
+  res.render('useractions/createevent', {googleKey});
 });
 
 const passToNumber = (number) => {
@@ -15,15 +17,14 @@ const passToNumber = (number) => {
   return finalNumber
 }
 
-router.post('/createevent', (req, res, next) => {
+
+router.post('/createevent', ensureLoggedIn('/userlogin'), (req, res, next) => {
   let {
-    name, date, from, to, music, latitude, longitude,
+    name, date, from, to, music, address
   } = req.body;
 
-  const location = {
-    type: 'Point',
-    coordinates: [longitude, latitude],
-  };
+  let owner = req.user._id
+  console.log(owner)
 
   from = passToNumber(from)
   to = passToNumber(to)
@@ -31,7 +32,7 @@ router.post('/createevent', (req, res, next) => {
     from: from,
     to: to,
   };
-  const newEvent = new Event({ name, date, time, styles: music, location });
+  const newEvent = new Event({ name, date, time, styles: music, address, owner });
 
   newEvent.save()
     .then(() => {
@@ -72,4 +73,31 @@ router.post('/eventsfilter', (req, res, next) => {
   console.log(filter)
   res.redirect('/map')
 });
+
+const passToHour = (number) => {
+  hours = Math.floor(number / 60);
+  min = number % 60;
+  final = `${hours}:${min}`
+  return final
+}
+
+
+router.get('/event/:id', (req,res,next)=>{
+  let id = req.params.id
+  let artistName
+  Event.find({_id:id})
+  .then((event) => { 
+    User.find({_id:event[0].owner})
+      .then((response) => {
+       artistName = response[0].username
+       let newFrom = passToHour(event[0].time.from)
+       let newTo = passToHour(event[0].time.to)
+       res.render('profiles/event',{response: event[0], newFrom, newTo, artistName})
+      })
+      .catch((error) => console.log(error))
+  })
+  .catch((error) => console.log(error))
+})
+
+
 module.exports = router;
