@@ -1,31 +1,116 @@
-<h1>Hosting Venue</h1>
+{{!-- <h2 class="title">Hosting Venue</h2>
+<div class="user-profile container card-deck">
+  <div class="row">
+    <div class="user-picture">
+      <img src="http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg" alt="profile default">
+    </div>
+    <div class="user-profile-text">
+      <h3>User Type: {{user.role}}</h3>
+      <h3>User ID: {{user._id}}</h3>
+      <h3>Username: {{user.username}}</h3>
+      <a class="btn btn-success" href="/edituser">EDIT</a>
+    </div>
+  </div>
+</div> --}}
+<div class="profile-page">
+  <h2 class="title">Hosting Venue</h2>
+  <div class="card mb-3" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img class="card-img" src="http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg" alt="profile default">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h6>User Type: {{user.role}}</h6>
+          <h6>User ID: {{user._id}}</h6>
+          <h6>Username: {{user.username}}</h6>
+          <a class="btn btn-success" href="/edituser">EDIT</a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<a href="/edituser">EDIT</a>
-<img src="" alt="">
+  <h3>My Events</h3>
+  <div class="card-deck">
+    <div class="card">
+      <img src="http://im.gifbt.com/images/event-images-default.jpg" class="card-img-top" alt=".">
+      <div class="card-body">
+        <h5 class="card-title">Event</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="http://im.gifbt.com/images/event-images-default.jpg" class="card-img-top" alt=".">
+      <div class="card-body">
+        <h5 class="card-title">Event</h5>
+        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="http://im.gifbt.com/images/event-images-default.jpg" class="card-img-top" alt=".">
+      <div class="card-body">
+        <h5 class="card-title">Event</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
 
-<p>User Type: {{user.role}}</p>
-<p>User ID: {{user._id}}</p>
-<p>Username: {{user.username}}</p>
+  <h3>Artists I Follow</h3>
+  <div class="card-deck">
+    <div class="card">
+      <img src="https://icon2.kisspng.com/20180327/fiw/kisspng-rock-band-silhouette-musical-ensemble-band-5abb116d49ff70.1610654615222091333031.jpg" class="card-img-top" alt=".">
+      <div class="card-body">
+        <h5 class="card-title">Artist</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://icon2.kisspng.com/20180327/fiw/kisspng-rock-band-silhouette-musical-ensemble-band-5abb116d49ff70.1610654615222091333031.jpg" class="card-img-top" alt=".">
+      <div class="card-body">
+        <h5 class="card-title">Artist</h5>
+        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="https://icon2.kisspng.com/20180327/fiw/kisspng-rock-band-silhouette-musical-ensemble-band-5abb116d49ff70.1610654615222091333031.jpg" class="card-img-top" alt=".">
+      <div class="card-body">
+        <h5 class="card-title">Artist</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
 
-<p>My Events</p>
-<ul>
-  <li><a href="/event">Events 1</a></li>
-  <li> Events 2</li>
-  <li> Events 3</li>
-</ul>
-<p>Artists I Follow</p>
-<ul>
-  <li> Artist 1</li>
-  <li> Artist 2</li>
-  <li> Artist 3</li>
-</ul>
-<p>Favorite Styles</p>
-<ul>
-  <li>Style 1</li>
-  <li>Style 2</li>
-  <li>Style 3</li>
-</ul>
-
-<p>Notifications</p>
-
-<a href="/userlogout">Log Out</a>
+  <h3>My Favorite Genres</h3>
+  <div class="card-deck">
+    <div class="card">
+      <img src="http://cdn.last.fm/flatness/responsive/2/noimage/default_album_300_g4.png" class="card-img-top" alt=".">
+      <div class="card-body">
+        <h5 class="card-title">Pop</h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="http://cdn.last.fm/flatness/responsive/2/noimage/default_album_300_g4.png" class="card-img-top" alt=".">
+      <div class="card-body">
+        <h5 class="card-title">Rock</h5>
+        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="http://cdn.last.fm/flatness/responsive/2/noimage/default_album_300_g4.png" class="card-img-top" alt=".">
+      <div class="card-body">
+        <h5 class="card-title">Country</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>

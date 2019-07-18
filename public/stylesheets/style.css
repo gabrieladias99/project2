@@ -4,8 +4,7 @@ body {
   padding: 0; }
 
 .header {
-  margin: 10px;
-  border: 1px solid black; }
+  margin: 10px; }
 
 #map {
   height: 776px;
@@ -33,5 +32,18 @@ body {
   height: 776px;
   width: 375px;
   background-color: red; }
+
+.header nav a:hover {
+  background-color: blue;
+  color: #fff; }
+
+.title {
+  text-align: left; }
+
+.user-profile {
+  background-color: rgba(200, 200, 200, 0.6); }
+
+.profile-page {
+  margin: 10px; }
 
 /*# sourceMappingURL=style.css.map */

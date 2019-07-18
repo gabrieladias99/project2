@@ -13,17 +13,16 @@
 <body>
   <header class="header">
     <nav class="nav nav-pills flex-column flex-sm-row">
-      <a class="flex-sm-fill text-sm-center nav-link active" href="#">Filter</a>
-      <a class="flex-sm-fill text-sm-center nav-link" href="#">Events List</a>
-      <a class="flex-sm-fill text-sm-center nav-link" href="#">Profile</a>
-      <a class="flex-sm-fill text-sm-center nav-link" href="userlogin">Log In</a>
+      <a class="flex-sm-fill text-sm-center nav-link border border-primary" href="/filters">Filter</a>
+      <a class="flex-sm-fill text-sm-center nav-link border border-primary" href="#">Events List</a>
+      <a class="flex-sm-fill text-sm-center nav-link border border-primary" href="/userprofile">Profile</a>
+      <a class="flex-sm-fill text-sm-center nav-link border border-primary" href="userlogin">Log In</a>
     </nav>
   </header>
-
-<main>
-
+  <main>
   {{!-- This tag renders the views content --}}
   {{{body}}}
+  </main>
 
 </body>
 

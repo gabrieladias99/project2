@@ -6,7 +6,6 @@ body {
 
 .header {
   margin: 10px;
-  border: 1px solid black;
 }
 
 #map {
@@ -39,3 +38,19 @@ body {
   background-color: red;
 }
 
+.header nav a:hover {
+  background-color: blue;
+  color: #fff;
+}
+
+.title {
+  text-align: left;
+}
+
+.user-profile {
+  background-color: rgba(200, 200, 200, .6);
+}
+
+.profile-page {
+  margin: 10px;
+}

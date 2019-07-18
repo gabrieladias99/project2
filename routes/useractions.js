@@ -7,7 +7,7 @@ const {ensureLoggedIn} = require('connect-ensure-login');
 
 /* GET home page */
 router.get('/createevent', ensureLoggedIn('/userlogin'), (req, res, next) => {
-  const googleKey = process.env.GOOGLE_KEY
+  const googleKey = process.env.GOOGLE_KEY;
   res.render('useractions/createevent', {googleKey});
 });
 

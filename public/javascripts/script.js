@@ -1,8 +1,5 @@
 function initAutocomplete() {
 
-  axios.post('/teste', {teste:'Gabriela'})
-  .then()
-  .catch()
 
   var styledMapType = new google.maps.StyledMapType(
     [
