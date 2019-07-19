@@ -6,22 +6,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{{title}}</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="/stylesheets/style.css" />
 </head>
 
 <body>
   <header class="header">
-    <nav class="nav nav-pills flex-column flex-sm-row">
-      <a class="flex-sm-fill text-sm-center nav-link border border-primary" href="/filters">Filter</a>
-      <a class="flex-sm-fill text-sm-center nav-link border border-primary" href="#">Events List</a>
-      <a class="flex-sm-fill text-sm-center nav-link border border-primary" href="/userprofile">Profile</a>
-      <a class="flex-sm-fill text-sm-center nav-link border border-primary" href="userlogin">Log In</a>
+    <nav id='navbar'class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-header d-flex align-items-center">
+        <img id='logo' src="/images/logo.png" alt="">
+        <a class="navbar-brand" href="/">GIG</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right row">
+        <a class="flex-sm-fill text-center nav-link" href="/createevent">Create Event</a>
+        <a class="flex-sm-fill text-center nav-link" href="/">Events</a>
+        <a class="flex-sm-fill text-center nav-link" href="/userprofile">Profile</a>
+        {{#if user}}
+        <a class="flex-sm-fill text-center nav-link" href="userlogout">Log Out</a>
+        {{/if}}
+        {{#unless user}}
+        <a class="flex-sm-fill text-center nav-link" href="userlogin">Log In</a>
+        {{/unless}}
+      </ul>
     </nav>
   </header>
   <main>
-  {{!-- This tag renders the views content --}}
-  {{{body}}}
+    {{!-- This tag renders the views content --}}
+    {{{body}}}
   </main>
 
 </body>

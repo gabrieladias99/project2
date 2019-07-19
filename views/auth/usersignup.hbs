@@ -1,3 +1,4 @@
+<div class='container border rounded'>
 <form class="px-4 py-3" action="/usersignup" method="POST" id="form-container">
   <div class="form-group">
     <label for="exampleDropdownFormUsername1">Username</label>
@@ -22,5 +23,8 @@
     {{#if message}}
       <div class="error-message">{{ message }}</div>
     {{/if}}
-  <button type="submit" class="btn btn-primary" value="Sign Up">Sign Up</button>
+    <div class="text-center">
+     <button type="submit" class="btn btn-primary" value="Sign Up">Sign Up</button>
+    </div>
 </form>
+</div>

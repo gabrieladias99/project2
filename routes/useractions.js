@@ -9,8 +9,14 @@ let filter = 0
 
 /* GET home page */
 router.get('/createevent', ensureLoggedIn('/userlogin'), (req, res, next) => {
-  const googleKey = process.env.GOOGLE_KEY
-  res.render('useractions/createevent', { googleKey });
+  if (req.user.role === 'Artist') {
+    const googleKey = process.env.GOOGLE_KEY
+    const { user } = req
+    res.render('useractions/createevent', { googleKey, user });
+  }
+  if (req.user.role === 'Music Lover') {
+    res.redirect('/userprofile')
+  }
 });
 
 const passToNumber = (number) => {
@@ -21,7 +27,6 @@ const passToNumber = (number) => {
 
 router.post('/createevent', ensureLoggedIn('/userlogin'), (req, res, next) => {
   const test = { owner: req.user._id };
-
   for (key in req.body) {
     if (!test[key]) {
       test[key] = req.body[key]
@@ -109,17 +114,17 @@ router.get('/event/igo/:eventid', ensureLoggedIn('/userlogin'), (req, res, next)
   const event = req.params.eventid
   SignEvent.find({ participant, event })
     .then((result) => {
-      if(result.length === 0 ){
+      if (result.length === 0) {
         SignEvent.create({ participant, event })
-        .then(() => {
-          res.redirect('/userprofile')
-        })
-        .catch((error) => {
-          throw new Error(error)
-        })
+          .then(() => {
+            res.redirect('/userprofile')
+          })
+          .catch((error) => {
+            throw new Error(error)
+          })
       }
     })
-    .catch((error) =>{
+    .catch((error) => {
       throw new Error(error)
     })
 });

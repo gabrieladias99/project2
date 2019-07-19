@@ -1,19 +1,69 @@
-<div id='wrapper'>
-  <a id='filter' href="/filters">Filters</a>
-  <div id="map"></div>
-  <div class='container'>
-    <div class='row'>
-      <a class='btn col-4'>Busca</a>
-      <a class='btn col-4'>Lista</a>
-      <a class='btn col-4'>Login</a>
+<div class='d-flex'>
+  <div id='filter-in-map' class='p-3'>
+     <h2 class='gray-color'>Search your GIG</h2>
+    <div class="form-event-filter card p-3">
+      <form action="/eventsfilter" method="POST">
+        <label class='w-100'>Date:
+          <input type="date" class="form-control mt-1" name="date">
+        </label>
+        <br>
+        <div class='d-flex'>
+          <label class='w-100 mr-3'>From:
+            <input type="time" name="from" class="form-control mt-1" min="0:00" max="23:59">
+          </label>
+          <label class='w-100'>To:
+            <input type="time" name="to" class="form-control mt-1" min="0:00" max="23:59">
+          </label>
+          <br>
+        </div>
+        <label>Music Styles</label>
+        <div class="container">
+          <div class="row">
+            <label class='col-md-6'>
+              <input type="checkbox" value="country" name='styles'>
+              Country</label>
+            <label class='col-md-6'>
+              <input type="checkbox" value="samba" name='styles'>
+              Samba</label>
+            <label class='col-md-6'>
+              <input type="checkbox" value="rock" name='styles'>
+              Rock</label>
+            <label class='col-md-6'>
+              <input type="checkbox" value="pop" name='styles'>
+              Pop</label>
+            <label class='col-md-6'>
+              <input type="checkbox" value="reggae" name='styles'>
+              Reggae</label>
+            <label class='col-md-6'>
+              <input type="checkbox" value="metal" name='styles'>
+              Metal</label>
+            <label class='col-md-6'>
+              <input type="checkbox" value="brazilian-music" name='styles'>
+              Brazilian Music</label>
+            <label class='col-md-6'>
+              <input type="checkbox" value="classic" name='styles'>
+              Classic</label>
+          </div>
+        </div>
+        <br>
+        <div class="text-center">
+          <button onclick="mapInit()" class="btn btn-primary" type="submit">ADD FILTERS</button>
+        </div>
+      </form>
     </div>
+    <div class="event-list">
+      <ul id="list"></ul>
+    </div>
+
   </div>
 
-<ul id="list">
 
-</ul>
+  <div id='wrapper'>
+    <a id='filter' href="/filters">Filters</a>
+    <div id="map"></div>
+
+  </div>
 </div>
-
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key={{googleKey}}&libraries=places"></script>
 <script type="text/javascript" src="/javascripts/main.js"></script>

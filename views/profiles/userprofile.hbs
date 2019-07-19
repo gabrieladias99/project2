@@ -1,33 +1,29 @@
-<h2 class="title">Music Lover</h2>
-<div class="user-profile">
-  <a class="btn btn-success" href="/edituser">EDIT</a>
-  <img src="http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg" alt="profile default">
-  <div class="user-profile-text">
-    <p>User Type: {{user.role}}</p>
-    <p>User ID: {{user._id}}</p>
-    <p>Username: {{user.username}}</p>
+<div class="profile-page">
+  <h2 class="title">Music Lover</h2>
+  <div class="card mb-3 col-md-4" style="max-width: 540px;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img class="card-img" src="http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg" alt="profile default">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h6>{{user.username}}</h6>
+          <a class="btn btn-primary" href="/edituser">EDIT</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>My Events</h3>
+  <div class="card-deck">
+     {{#each signedEvents}}
+   <div class="card col-md-4">
+      <img src="http://im.gifbt.com/images/event-images-default.jpg" class="card-img-top" alt=".">
+      <div class="card-body">
+        <h5 class="card-title"><a href="event/{{_id}}">{{event.name}}</a></h5>
+        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      </div>
+    </div>
+  {{/each}}
   </div>
 </div>
-
-<p>My Events</p>
-<ul>
-  {{#each signedEvents}}
-  <li><a href="event/{{_id}}">{{event.name}}</a></li>
-  {{/each}}
-</ul>
-<p>Artists I Follow</p>
-<ul>
-  <li> Artist 1</li>
-  <li> Artist 2</li>
-  <li> Artist 3</li>
-</ul>
-<p>Favorite Styles</p>
-<ul>
-  <li>Style 1</li>
-  <li>Style 2</li>
-  <li>Style 3</li>
-</ul>
-
-<p>Notifications</p>
-
-<a href="/userlogout">Log Out</a>

@@ -1,42 +1,77 @@
-<h1>CREATE AN EVENT</h1>
-<a href="/">Return</a>
+<div id="big-screen" class='d-flex'>
+  <div class='p-3'>
+    <h2 class='gray-color'>Create your GIG</h2>
+    <div class="form-event-filter card p-3">
+      <form action="/createevent" method="POST">
+        <label class='w-100'>Name:
+          <input type="text" class="form-control mt-1" name="name">
+        </label>
+        <br>
+        <label class='w-100'>Date:
+          <input type="date" class="form-control mt-1" name="date">
+        </label>
+        <br>
+        <div class='d-flex'>
+          <label class='w-100 mr-3'>From:
+            <input type="time" name="from" class="form-control mt-1" min="0:00" max="23:59">
+          </label>
+          <label class='w-100'>To:
+            <input type="time" name="to" class="form-control mt-1" min="0:00" max="23:59">
+          </label>
+          <br>
+        </div>
+        <label>Music Styles</label>
+        <div class="container">
+          <div class="row">
+            <label class='col-md-6'>
+              <input type="checkbox" value="country" name='styles'>
+              Country</label>
+            <label class='col-md-6'>
+              <input type="checkbox" value="samba" name='styles'>
+              Samba</label>
+            <label class='col-md-6'>
+              <input type="checkbox" value="rock" name='styles'>
+              Rock</label>
+            <label class='col-md-6'>
+              <input type="checkbox" value="pop" name='styles'>
+              Pop</label>
+            <label class='col-md-6'>
+              <input type="checkbox" value="reggae" name='styles'>
+              Reggae</label>
+            <label class='col-md-6'>
+              <input type="checkbox" value="metal" name='styles'>
+              Metal</label>
+            <label class='col-md-6'>
+              <input type="checkbox" value="brazilian-music" name='styles'>
+              Brazilian Music</label>
+            <label class='col-md-6'>
+              <input type="checkbox" value="classic" name='styles'>
+              Classic</label>
+          </div>
+        </div>
+        <br>
+        <div class="text-center">
+          <button onclick="mapInit()" class="btn btn-primary" type="submit">CREATE EVENT</button>
+        </div>
+      </form>
+    </div>
+    <div class="event-list">
+      <ul id="list"></ul>
+    </div>
 
-<form action="/createevent" method="post">
-
-  <label>Name:</label>
-  <input type="text" name="name">
-  <br>
-
-  <label>Date:</label>
-  <input type="date" name="date">
-  <br>
-
-  <label>From:</label>
-  <input type="time" name="from" min="0:00" max="23:59">
-  <label>To:</label>
-  <input type="time" name="to" min="0:00" max="23:59">
-  <br>
-
-  <label>Music Style</label>
-    <input type="checkbox" value="country" name="styles"> <label for="checkbox">Country</label>
-    <input type="checkbox" value="pop" name="styles"> <label for="checkbox">Pop</label>
-    <input type="checkbox" value="rock" name="styles"> <label for="checkbox">Rock</label>
+  </div>
 
 
-  {{!-- <select name="music">
-    <option value="country">Country</option>
-    <option value="pop">Pop</option>
-    <option value="rock">Rock</option>
-  </select> --}}
-  <br>
+  <div id='wrapper'>
+    <label class='w-100'>Location
+      <input class='w-100'id="pac-input" class="controls" type="text" name="address" placeholder="Search a Place">
+    </label>
+    <div id="mapEvent"></div>
 
-  <label>Location</label>
-  <input id="pac-input" class="controls" type="text" name="address" placeholder="Search a Place">
+  </div>
+</div>
 
-  <div id='mapEvent'></div>
-
-  <button type="submit">ADD</button>
-</form>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key={{googleKey}}&libraries=places&callback=initAutocomplete"></script>
-  <script src="/javascripts/script.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key={{googleKey}}&libraries=places&callback=initAutocomplete"></script>
+<script src="/javascripts/script.js"></script>

@@ -9,7 +9,8 @@ const { ensureLoggedIn } = require('connect-ensure-login');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.render('auth/layout');
+  const { user } = req
+  res.render('maps/map', {user});
 });
 
 // User log in, authentication, and log out routes

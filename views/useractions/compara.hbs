@@ -1,0 +1,41 @@
+<div class='d-flex'>
+   <div class='p-3'>
+<h2 class='gray-color'>Create an Event</h2>
+
+<form action="/createevent" method="post">
+
+  <label>Name:</label>
+  <input type="text" name="name">
+  <br>
+
+  <label>Date:</label>
+  <input type="date" name="date">
+  <br>
+
+  <label>From:</label>
+  <input type="time" name="from" min="0:00" max="23:59">
+  <label>To:</label>
+  <input type="time" name="to" min="0:00" max="23:59">
+  <br>
+
+  <label>Music Style</label>
+    <input type="checkbox" value="country" name="styles"> <label for="checkbox">Country</label>
+    <input type="checkbox" value="pop" name="styles"> <label for="checkbox">Pop</label>
+    <input type="checkbox" value="rock" name="styles"> <label for="checkbox">Rock</label>
+
+
+  {{!-- <select name="music">
+    <option value="country">Country</option>
+    <option value="pop">Pop</option>
+    <option value="rock">Rock</option>
+  </select> --}}
+  <br>
+
+  
+
+  <div id='mapEvent'></div>
+
+  <button type="submit">ADD</button>
+</form>
+</div>
+</div>

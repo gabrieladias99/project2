@@ -1,29 +1,54 @@
-<h1>FILTER AN EVENT</h1>
-<a href="/">Return</a>
+<div class='card p-5'>
+  <form action="/eventsfilter" method="POST">
 
+    <label class='w-100'>Date:
+      <input type="date" class="form-control mt-1" name="date">
+    </label>
+    <br>
+    <div class='d-flex'>
+      <label class='w-100 mr-3'>From:
+        <input type="time" name="from" class="form-control mt-1" min="0:00" max="23:59">
+      </label>
+      <label class='w-100'>To:
+        <input type="time" name="to" class="form-control mt-1" min="0:00" max="23:59">
+      </label>
+      <br>
+    </div>
 
-<form action="/eventsfilter" method="POST">
+    <label>Music Styles</label>
+    <div class="container">
+      <div class="row">
+        <label class='col-md-6'>
+          <input type="checkbox" value="country" name='styles'>
+          Country</label>
+        <label class='col-md-6'>
+          <input type="checkbox" value="samba" name='styles'>
+          Samba</label>
+        <label class='col-md-6'>
+          <input type="checkbox" value="rock" name='styles'>
+          Rock</label>
+        <label class='col-md-6'>
+          <input type="checkbox" value="pop" name='styles'>
+          Pop</label>
+        <label class='col-md-6'>
+          <input type="checkbox" value="reggae" name='styles'>
+          Reggae</label>
+        <label class='col-md-6'>
+          <input type="checkbox" value="metal" name='styles'>
+          Metal</label>
+        <label class='col-md-6'>
+          <input type="checkbox" value="brazilian-music" name='styles'>
+          Brazilian Music</label>
+        <label class='col-md-6'>
+          <input type="checkbox" value="classic" name='styles'>
+          Classic</label>
+      </div>
+    </div>
+</div>
+<br>
+<div class="text-center">
+<button onclick="mapInit()" type="submit" class="btn btn-primary">ADD FILTERS</button>
 
-  <label>Date:</label>
-  <input type="date" name="date">
-  <br>
-
-  <label>From:</label<h1>FILTER AN EVENT</h1>
-<a href="/">Return</a>
->
-  <input type="time" name="from" min="0:00" max="23:59">
-  <label>To:</label>
-  <input type="time" name="to" min="0:00" max="23:59">
-  <br>
-
-  <label>Music Styles</label>
-  <input type="checkbox" value="country"> <label for="checkbox">Country</label>
-  {{!-- <select name="music">
-    <option value="country">Country</option>
-    <option value="pop">Pop</option>
-    <option value="rock">Rock</option>
-  </select> --}}
-  <br>
-
-  <button onclick="mapInit()" type="submit">ADD FILTERS</button>
+</div>
 </form>
+</div>
