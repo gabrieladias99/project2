@@ -82,6 +82,13 @@ router.post('/eventsfilter', (req, res, next) => {
 const passToHour = (number) => {
   hours = Math.floor(number / 60);
   min = number % 60;
+  if(hours.length === 1){
+    hours = `0${hours}`
+    console.log(hours)
+  }
+  if(min.length === 1 || min.length === 0){
+    min = `0${min}`
+  }
   final = `${hours}:${min}`
   return final
 };

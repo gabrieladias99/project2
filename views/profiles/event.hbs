@@ -1,11 +1,13 @@
-<h1>PROFILE EVENTO</h1>
+<div class='container border rounded login-form mt-7'>
+  <form class="px-4 py-3" action="/userlogin" method="POST">
 
-<img src="" alt="">
+    <h1 class='text-center'>{{response.name}}</h1>
 
-<p>{{response.name}}</p>
-<a>{{response.address}}</a>
-<p><a href="/artist/:id">Artist:{{artistName}}</a></p>
-<p>{{newFrom}}- {{newTo}}</p>
-<p>{{response.styles}}</p>
-
-<button><a href='/event/igo/{{response._id}}'>I Go!</a></button>
+    <p>{{response.address}}</p>
+    <p>{{newFrom}}- {{newTo}}</p>
+    <p>{{response.styles}}</p>
+    <div class="text-center">
+      <button  action='/event/igo/{{response._id}}'class="btn btn-primary">I Go!</button>
+    </div>
+  </form>
+</div>
