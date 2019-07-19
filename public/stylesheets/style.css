@@ -29,6 +29,9 @@
   #big-screen {
     flex-wrap: wrap; } }
 
+.white {
+  color: white; }
+
 body {
   font-family: 'Quicksand', sans-serif;
   font-weight: 500;
