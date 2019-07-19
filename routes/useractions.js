@@ -94,6 +94,7 @@ const passToHour = (number) => {
 };
 
 router.get('/event/:id', (req, res, next) => {
+  const { user } = req
   let id = req.params.id
   let artistName
   Event.find({ _id: id })
@@ -103,7 +104,7 @@ router.get('/event/:id', (req, res, next) => {
           artistName = response[0].username
           let newFrom = passToHour(event[0].from)
           let newTo = passToHour(event[0].to)
-          res.render('profiles/event', { response: event[0], newFrom, newTo, artistName })
+          res.render('profiles/event', { response: event[0], newFrom, newTo, artistName, user })
         })
         .catch((error) => console.log(error))
     })
