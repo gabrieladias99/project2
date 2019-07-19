@@ -1,11 +1,13 @@
-<h1>Music Lover</h1>
-
-<a href="/edituser">EDIT</a>
-<img src="" alt="">
-
-<p>User Type: {{user.role}}</p>
-<p>User ID: {{user._id}}</p>
-<p>Username: {{user.username}}</p>
+<h2 class="title">Music Lover</h2>
+<div class="user-profile">
+  <a class="btn btn-success" href="/edituser">EDIT</a>
+  <img src="http://interfacetreinamentos.com.br/wp-content/uploads/2016/04/img-profile-default.jpg" alt="profile default">
+  <div class="user-profile-text">
+    <p>User Type: {{user.role}}</p>
+    <p>User ID: {{user._id}}</p>
+    <p>Username: {{user.username}}</p>
+  </div>
+</div>
 
 <p>My Events</p>
 <ul>

@@ -9,7 +9,7 @@ const { ensureLoggedIn } = require('connect-ensure-login');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-  res.render('auth/identification');
+  res.render('auth/layout');
 });
 
 // User log in, authentication, and log out routes
@@ -51,7 +51,6 @@ router.get('/userlogout', ensureLoggedIn('/userlogin'), (req, res) => {
   req.logout();
   res.redirect('/userlogin');
 });
-
 
 
 module.exports = router;

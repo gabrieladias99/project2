@@ -3,6 +3,9 @@ body {
   margin: 0;
   padding: 0; }
 
+.header {
+  margin: 10px; }
+
 #map {
   height: 776px;
   width: 375px; }
@@ -30,21 +33,17 @@ body {
   width: 375px;
   background-color: red; }
 
-.btn {
-  background-color: #1c87c9;
-  border: none;
-  color: white;
-  position: flex;
-  flex-grow: 1; }
+.header nav a:hover {
+  background-color: blue;
+  color: #fff; }
 
-.container {
-  width: 100%;
-  padding-right: 0;
-  padding-left: 0;
-  margin-right: 0;
-  margin-left: 0; }
+.title {
+  text-align: left; }
 
-#wrapper {
-  position: relative; }
+.user-profile {
+  background-color: rgba(200, 200, 200, 0.6); }
+
+.profile-page {
+  margin: 10px; }
 
 /*# sourceMappingURL=style.css.map */
