@@ -1,6 +1,8 @@
 const express = require('express');
 const passport = require('passport');
-const Event = require('../models/event')
+const Event = require('../models/event');
+const SignEvent = require('../models/signEvent');
+
 
 const { ensureLoggedIn } = require('connect-ensure-login');
 
@@ -26,7 +28,12 @@ router.post('/userlogin', passport.authenticate('local', {
 
 router.get('/userprofile', ensureLoggedIn('/userlogin'), (req, res) => {
   if (req.user.role === 'Music Lover') {
-    res.render('profiles/musicloverprofile', { user: req.user });
+    SignEvent.find({participant: req.user._id})
+    .populate('event')
+    .then((signedEvents) => {
+      res.render('profiles/userprofile', { user: req.user, signedEvents });
+    })
+    .catch((error) => console.log(error))
   }
   if (req.user.role === 'Artist') {
     Event.find({owner: req.user._id})
@@ -36,7 +43,7 @@ router.get('/userprofile', ensureLoggedIn('/userlogin'), (req, res) => {
     .catch((error) => console.log(error))
   }
   if (req.user.role === 'Hosting Venue') {
-    res.render('profiles/hostingvenueprofile', { user: req.user });
+    res.render('profiles/venueprofile', { user: req.user });
   }
 });
 
@@ -45,9 +52,6 @@ router.get('/userlogout', ensureLoggedIn('/userlogin'), (req, res) => {
   res.redirect('/userlogin');
 });
 
-router.get('/map', (req,res,next) =>{
-  const googleKey = process.env.GOOGLE_KEY
-  res.render('maps/map', {googleKey})
-})
+
 
 module.exports = router;

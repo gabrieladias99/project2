@@ -90,7 +90,8 @@ const mapInit = () => {
             });
           })
           .catch((error) => console.log(error))
-        
+        const list = document.getElementById('list')
+        list.innerHTML += `<li><a href='/event/${event._id}'>${event.name}</a></li>`
       }
     });
   }

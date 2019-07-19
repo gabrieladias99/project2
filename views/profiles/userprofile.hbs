@@ -9,9 +9,9 @@
 
 <p>My Events</p>
 <ul>
-  <li><a href="/event">Events 1</a></li>
-  <li> Events 2</li>
-  <li> Events 3</li>
+  {{#each signedEvents}}
+  <li><a href="event/{{_id}}">{{event.name}}</a></li>
+  {{/each}}
 </ul>
 <p>Artists I Follow</p>
 <ul>
