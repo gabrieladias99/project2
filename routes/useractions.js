@@ -116,7 +116,7 @@ router.get('/map', (req, res, next) => {
   res.render('maps/map', { googleKey, eventlist });
 });
 
-router.get('/event/igo/:eventid', ensureLoggedIn('/userlogin'), (req, res, next) => {
+router.get('/event/igo/:eventid', (req, res, next) => {
   console.log(req.user)
   const participant = req.user._id
   const event = req.params.eventid
